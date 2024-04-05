@@ -1,0 +1,76 @@
+---
+title: "Appendix: Methods for the Classification of Data from Open-Ended Questions in Surveys"
+subtitle: "Disputation<br>16 April 2024"
+author:
+  - name: Camille Landesvatter
+    #email: camille.landesvatter@uni-mannheim.de
+    affiliations:
+      - name: University of Mannheim
+format:
+  revealjs: 
+    theme: [white, custom.css]
+    #theme: default 
+    #theme: simple
+    footer: "Appendix: Methods for the Classification of Data from Open-Ended Questions in Surveys"
+    embed-resources: true
+    slide-number: true
+    preview-links: auto
+    #logo: images/quarto.png
+    #show-slide-number: print
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+## Characteristics of Open-Ended Survey Answers
+
+<!-- - "survey questions that do not include a set of response options” (Züll, 2016, p. 1) -->
+
+<!-- - "require respondents to formulate a response in their own words and to express it verbally or in writing” (Züll, 2016, p. 1) -->
+
+<!-- - ≠ closed-ended questions with answer categories presented in a closed form (Inui et al., 2001, p. 1) -->
+
+```{r wordcloud-survey-answers, out.width='100%', fig.align = "center", fig.show='hold'}
+#| label: fig-1
+#| fig-show: "asis"
+#| fig-cap: "The previous question was: 'How often can you trust the federal government in Washington to do what is right?'. Your answer was: '[Always; Most of the time; About half of the time; Some of the time; Never; Don’t Know]'. In your own words, please explain why you selected this answer."
+
+library(tidyverse)
+
+setwd("/Users/camillelandesvatter/Library/CloudStorage/GoogleDrive-landesvatterc@gmail.com/Meine Ablage/2022_work-life-politics/main study/Paper Text-Audio/Submission 1 (POQ)")
+
+data <- read.csv("./data/data_long.csv") %>% 
+  filter(variable_probing=="political_trust_washington") %>% 
+	select("ID_participant", "text_answer") %>% 
+	filter(!is.na(text_answer)) %>% 
+	mutate(doc_length=ifelse(!is.na(text_answer),sapply(strsplit(as.character(text_answer), "[[:space:]]+"), length),NA)) %>% 
+	arrange(doc_length) %>% 
+	filter(ID_participant == "5d91daf3704e790018f47229" | # no context
+				 	ID_participant == "61119010fe205e4436dce3d6" | # no context
+				 	ID_participant == "5d62b2186f363200168bbb85" | # issues of self-administered questionnaires
+				 	ID_participant == "5ea83c900b2b5d24b9942af2" | # issues of self-administered questionnaires
+				 	ID_participant == "601cbb3526aa517be4a924ce" | # context is provided but no details
+				 	ID_participant == "63647038cdac73d9a21f4a3c" |
+				 	ID_participant == "5f5a0f0a612008057e58d281" | #useful
+				 	ID_participant == "5d42ec552de85600153b604a" | #useful
+				 	ID_participant == "5ebf2b97ce2e0f1c05e9b00a" #useful, but other issues (too lengthy)
+				 ) %>% 
+	mutate(code=as.character(c(1,1,2,3,1,2,4,4,5)))
+
+
+# Create a plot
+library(ggplot2)
+library(ggwordcloud)
+
+set.seed(42)
+ggplot(data, aes(label = text_answer)) +
+  geom_text_wordcloud(aes(color = code, size=7)) +
+	scale_size_area(max_size = 6) +
+  theme_minimal() +
+  #labs(title = "") +
+  theme(legend.position = "none") +
+	coord_equal(ratio = 0.5) +
+	theme_linedraw()
+
+```
+
