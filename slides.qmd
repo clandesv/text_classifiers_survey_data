@@ -45,15 +45,9 @@ Motivation:
 
 ## Methods for Analyzing Data from Open-Ended Questions
 
-<!-- The quantitative analysis of data from open-ended questions, which means formatting the unstructured natural language data into numerical formats, requires methods of classification. -->
-
-<!-- fully manual methods require the highest resources (time and effort) -->
-
-<!-- The only exception in Table 1, column 3 that does not involve manually annotated examples is zero-shot prompting. In zero-shot prompting, the human input does not consist of  annotated examples but merely a human-generated prompt. Zero-shot prompting can thus be considered a semi-automated approach, however with a minimum of human involvement. -->
-
 ![Table 1. Overview of methods for classifying open-ended survey
 responses. Source: Own
-depicition.](table-methods-colored.png "Overview of methods for classifying open-ended survey responses."){fig-alt="Overview of methods for classifying open-ended survey responses."}
+depiction.](table-methods-colored.png "Overview of methods for classifying open-ended survey responses."){fig-alt="Overview of methods for classifying open-ended survey responses."}
 
 ------------------------------------------------------------------------
 
@@ -97,7 +91,7 @@ https://doi.org/10.1177/00491241241234871</blockquote>
 
 <!-- - **Experimental Design**: block randomized question order where closed-ended questions are followed by open-ended follow-up probing questions -->
 
-<!-- - **Data**: U.S. non-probability sample; n=1,500 -->
+- **Data**: U.S. non-probability sample; n=1,500
 
 </font size>
 
@@ -107,24 +101,20 @@ https://doi.org/10.1177/00491241241234871</blockquote>
 
 <font size = "6">
 
--   **Operationalization** via two classifications: share of known vs.
-    unknown others in associations (I), sentiment (pos-neu-neg) of
-    associations (II)
+<figure> 
+    <img src="paper1/methods.png" width = "800" height="250"/> 
+    <figcaption>Figure 1: Supervised Classification for a Trust Question.</figcaption>
+</figure>
 
--   Supervised classification approach:
+::: fragment
+Supervised classification approach:
 
-    -   
+-  1.  manual labeling of randomly sampled documents
+            (n=\[[1,000]{style="color:orange"}/[1,500]{style="color:blue"}\])
 
-        1.  manual labeling of randomly sampled documents
-            (n=\[1,000/1,500\])
-
-    -   
-
-        2.  fine-tuning the weights of two BERT[^2] models (base model
-            uncased version), using the manually coded data as training
-            data, to classify the remaining n=\[6,500/6,000\]
-
--   **Data**: U.S. non-probability sample; n=1,500
+- 2.  fine-tuning the weights of two BERT[^2] models, using the manually coded data as training
+            data, to classify the remaining n=\[[6,500]{style="color:orange"}/[6,000]{style="color:blue"}\]
+:::
 
 [^2]: bidirectional encoder representations from transformers
 
@@ -136,31 +126,57 @@ https://doi.org/10.1177/00491241241234871</blockquote>
 
 ## Study 1: Results
 
-::: {style="text-align: center;"}
 <figure>
-
-<img src="paper1/table_exemplary_data.png"/>
-
-<figcaption>Table 2: Illustration of exemplary data. <em>Note:</em>
-n=7,497.</figcaption>
-
+  <table style="font-size: 22px;">
+    <tbody>
+      <tr style="height: 40px;">
+        <td style="height: 40px;"><strong>ID</strong></td>
+        <td><strong>Measure</strong></td>
+        <td><strong>Trust</strong></td>
+        <td><strong>Probing Answer</strong></td>
+        <td><strong>Associations (known others)</strong></td>
+        <td><strong>Associations (sentiment)</strong></td>
+      </tr>
+      <tr style="height: 20px; background-color: #cfe2d4;">
+        <td style="height: 20px;">123</td>
+        <td>Most people</td>
+        <td>0.33</td>
+        <td>I was thinking of people I don't know personally.</td>
+        <td>0 (No)</td>
+        <td>0 (neutral/positive)</td>
+      </tr>
+      <tr style="height: 20px; background-color: #cfe2d4;">
+        <td style="height: 20px;">3139</td>
+        <td>Most people</td>
+        <td>0.17</td>
+        <td>Tourists that come to our little village. I tend to be very wary of them.</td>
+        <td>0 (No)</td>
+        <td>1 (negative)</td>
+      </tr>
+      <tr style="height: 20px; background-color: #fff2cc;">
+        <td style="height: 20px;">2980</td>
+        <td>Stranger</td>
+        <td>0</td>
+        <td>No one in particular, but I don't think I could trust anyone ever again.</td>
+        <td>0 (No)</td>
+        <td>1 (negative)</td>
+      </tr>
+      <tr style="height: 40px; background-color: #d9e1f2;">
+        <td style="height: 40px;">4286</td>
+        <td>Watching a loved one</td>
+        <td>0</td>
+        <td>A former neighbor of mine who was a single father with a son close to my son's age.</td>
+        <td>1 (Yes)</td>
+        <td>0 (neutral/positive)</td>
+      </tr>
+    </tbody>
+  </table>
+ <figcaption>Table 2: Illustration of exemplary data. <em>Note:</em> n=7,497.</figcaption>
 </figure>
 
-::: fragment
-<figure>
-
-<img src="paper1/regression-plot-disputation.png"/>
-
-<figcaption>Figure 1: Trust Scores by Associations for the Most People
-Question.<br> <em>Note:</em> CIs are 90% and 95%, n=1,499.</figcaption>
-
-</figure>
-:::
-:::
-
-<!-- sum(!is.na(data$probing_answer[data$variable=="Most people"])) -->
 
 ------------------------------------------------------------------------
+
 
 ## Open-ended survey questions: A comparison of information content in text and audio response formats {background-image="paper2/typing-vs-speaking.png" background-size="60%" background-opacity="0.4"}
 
@@ -200,8 +216,7 @@ to Public Opinion Quarterly.</blockquote>
 
 <font size = "6">
 
--   **Operationalization** via application of measures from information
-    theory and machine learning to classify open-ended survey answers
+-   **Operationalization** of information content in open answers via application of measures from information theory and machine learning
     -   response length, number of topics, response entropy
 -   **Data**: U.S. non-probability sample; n=1,461
 
@@ -253,6 +268,8 @@ Political Science Review.</blockquote>
 
 -   **Research Question**: Are individual trust judgments in surveys
     driven by affective rationales?
+    
+-   **Questionnaire Design**: voice condition only
 
 [^4]: Theiss-Morse, E., and D. Barton. 2017. “Emotion, Cognition, and
     Political Trust.” Pp. 160–75 in Handbook on Political Trust. Edward
@@ -274,7 +291,7 @@ Political Science Review.</blockquote>
 
 <img src="paper3/workflow.excalidraw.png"/>
 
-<figcaption>Figure: Methods for Sentiment and Emotion
+<figcaption>Figure 3: Methods for Sentiment and Emotion
 Analysis[^5].</figcaption>
 
 [^5]: Pérez, J. et al. 2023. “Pysentimiento: A Python Toolkit for
@@ -290,10 +307,10 @@ Analysis[^5].</figcaption>
 ::: {style="text-align: center;"}
 <figure>
 
-<img src="paper3/results-emotion.png" width="650" height="550"/>
+<img src="paper3/results-emotion-short.png"/>
 
-<figcaption>Figure 3: Emotion Recognition for Speech Data with
-SpeechBrain. <em>Note.</em> CIs are 95%, n_neutral=408, n_anger=44,
+<figcaption>Figure 4: Emotion Recognition for Speech Data with
+SpeechBrain.<br><em>Note.</em> n_neutral=408, n_anger=44,
 n_sadness=18, n_happiness=21.</figcaption>
 
 </figure>
@@ -348,42 +365,28 @@ implementation of semi-automated methods.
 :::
 
 ::: fragment
--   traditional semi-automated methods, such as supervised ML, are
-    helpful and appealing, but they require sufficient and high-quality
+-   traditional semi-automated methods, e.g. supervised ML, require sufficient and high-quality
     training data (i.e., labeled examples)
 
--   E.g., [Study 1]{style="color:orange"}: Random Forest with 1,500
-    labeled examples versus BERT
-    <!-- higher accuracy for BERT (87-95) than RF (83-92) for the same set of labeled documents -->
-
--   this can be a challenge for survey researchers when surveys don't
-    provide thousands of documents
+-   surveys often don't provide thousands of documents
     <!-- issues of item response rates to OEQs, experimental conditions, structure of open answer, etc. -->
+    
+- LLMs allow less resource-intensive and domain-specific finetuning and remove the need to build complex systems from scratch
+ 
+-  E.g., [Study 1]{style="color:orange"}: Random Forest with 1,500 labeled examples versus BERT
 
--   LLMs allow researchers to access and leverage great capabilities
-    without having to build complex systems from scratch
+<!-- higher accuracy for BERT (87-95) than RF (83-92) for the same set of labeled documents -->
+    
 :::
+
+</font size>
 
 ------------------------------------------------------------------------
 
 ## Machine Learning and Open-ended Answers
 
-<blockquote style="color:blue">
+<font size = "6">
 
-Fine-tuning pre-trained models can be valuable for classifying
-<u>domain-specific data</u>.
-
-</blockquote>
-
-::: fragment
--   fine-tuning requires little resources and can add domain-specific
-    context
-    -   [Study 1]{style="color:orange"}: Fine-tuning with \~20%
-        (n=1,500) documents shows high accuracy (95%) ("known-unknown
-        others" classification)
-:::
-
-::: fragment
 -   But: consider the complexity and limited transparency of these
     models
     -   always start with simple methods and evaluate
@@ -391,7 +394,7 @@ Fine-tuning pre-trained models can be valuable for classifying
         -   [Study 3]{style="color:orange"}: dictionary approach → deep
             learning
     -   accuracy-explainability trade-off
-:::
+
 
 </font size>
 
@@ -459,4 +462,4 @@ The final decision for one of the approaches depends on:
 
 ------------------------------------------------------------------------
 
-## <font size = "14"> Thank you for your Attention! </font size> {.center background-image="overview-3-studies.png" background-size="130%" background-opacity="0.4"}
+## <font size = "14"> Thank you for your Attention! </font size> {.center background-image="overview-3-studies.png" background-size="150%" background-opacity="0.4"}

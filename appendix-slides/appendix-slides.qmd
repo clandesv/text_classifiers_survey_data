@@ -74,3 +74,48 @@ ggplot(data, aes(label = text_answer)) +
 
 ```
 
+
+
+------------------------------------------------------------------------
+
+## Study 1: Results
+
+::: {style="text-align: center;"}
+<figure>
+
+<img src="../paper1/table_exemplary_data.png"/>
+
+<figcaption>Table 2: Illustration of exemplary data. <em>Note:</em>
+n=7,497.</figcaption>
+
+</figure>
+
+::: fragment
+<figure>
+
+<img src="../paper1/regression-plot-disputation.png"/>
+
+<figcaption>Figure 1: Trust Scores by Associations for the Most People
+Question.<br> <em>Note:</em> CIs are 90% and 95%, n=1,499.</figcaption>
+
+</figure>
+:::
+
+
+<!-- sum(!is.na(data$probing_answer[data$variable=="Most people"])) -->
+
+------------------------------------------------------------------------
+
+## Study 3: Results
+
+::: {style="text-align: center;"}
+<figure>
+
+<img src="paper3/results-emotion.png" width="650" height="550"/>
+
+<figcaption>Figure 3: Emotion Recognition for Speech Data with
+SpeechBrain. <em>Note.</em> CIs are 95%, n_neutral=408, n_anger=44,
+n_sadness=18, n_happiness=21.</figcaption>
+
+</figure>
+:::
