@@ -32,7 +32,7 @@ questions?]{style="color:black"}</blockquote>
 ::: fragment
 Motivation:
 
-1️⃣ Increase in methods to collect natural language (e.g., smartphone surveys with voice technologies) requires the evaluation of automated, ML-based methods.
+1️⃣ Increase in methods to collect natural language (e.g., smartphone surveys with voice technologies) requires the evaluation of methods for their analysis.
 :::
 
 ::: fragment
@@ -47,7 +47,7 @@ Motivation:
 
 ![Table 1. Overview of methods for classifying open-ended survey
 responses. Source: Own
-depiction.](table-methods-colored.png "Overview of methods for classifying open-ended survey responses."){fig-alt="Overview of methods for classifying open-ended survey responses."}
+depiction.](table-methods-colored.png "Overview of methods for classifying open-ended survey responses.")
 
 ------------------------------------------------------------------------
 
