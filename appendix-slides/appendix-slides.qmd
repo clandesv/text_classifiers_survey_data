@@ -119,3 +119,8 @@ n_sadness=18, n_happiness=21.</figcaption>
 
 </figure>
 :::
+
+
+<!-- wie schneidet die speech emotion recognition im Vergleich zu den text based classifications ab? -->
+<!-- Text recognizes words and their meanings (based on word embeddings), here we find sentiment (APPENDIX!), but audio only includes tonal cues, here we find no such variation -->
+

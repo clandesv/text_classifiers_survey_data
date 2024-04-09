@@ -20,6 +20,9 @@ editor:
 
 ## Research Questions and Motivation
 
+<!-- "Welcome to my defense of my thesis with the title .. " -->
+
+
 <font size = "6">
 
 <blockquote>[Which methods can we use to classify data from open-ended
@@ -32,11 +35,11 @@ questions?]{style="color:black"}</blockquote>
 ::: fragment
 Motivation:
 
-1️⃣ Increase in methods to collect natural language (e.g., smartphone surveys with voice technologies) requires the evaluation of methods for their analysis.
+1️⃣ Increase in methods to collect natural language (e.g., smartphone surveys with voice technologies) requires the evaluation of available methods.
 :::
 
 ::: fragment
-2️⃣ Special structure of open-ended survey answers (e.g., shortness, lack of context) requires the testing of traditional and recent methods, e.g., word embeddings.
+2️⃣ Special structure of open-ended survey answers (e.g., shortness, lack of context) requires the testing of ML methods for the survey context, e.g., word embeddings.
 :::
 
 </font size>
@@ -84,14 +87,14 @@ https://doi.org/10.1177/00491241241234871</blockquote>
 
 -   **Research Question**: How valid are traditional trust survey
     measures?
+    
+- **Questionnaire Design**: 5 open-ended questions per respondent, block-randomized order
+    
+- **Data**: U.S. non-probability sample; $n$=1,500 with 7,497 open answers
 
 [^1]: Bauer, P. C., and M. Freitag. 2018. “Measuring Trust.” Pp. 1–27 in
     The Oxford Handbook of Social and Political Trust, edited by E. M.
     Uslaner. Oxford University Press.
-
-<!-- - **Experimental Design**: block randomized question order where closed-ended questions are followed by open-ended follow-up probing questions -->
-
-- **Data**: U.S. non-probability sample; n=1,500
 
 </font size>
 
@@ -102,7 +105,7 @@ https://doi.org/10.1177/00491241241234871</blockquote>
 <font size = "6">
 
 <figure> 
-    <img src="paper1/methods.png" width = "800" height="250"/> 
+    <img src="paper1/methods.png" width = "850" height="270"/> 
     <figcaption>Figure 1: Supervised Classification for a Trust Question.</figcaption>
 </figure>
 
@@ -218,7 +221,12 @@ to Public Opinion Quarterly.</blockquote>
 
 -   **Operationalization** of information content in open answers via application of measures from information theory and machine learning
     -   response length, number of topics, response entropy
--   **Data**: U.S. non-probability sample; n=1,461
+    
+- **Questionnaire Design**: 9 open-ended questions per respondent, block-randomized order
+
+-   **Data**: U.S. non-probability sample; $n$=1,461 with $n_{text}$=800 and $n_{audio}$=661
+	- average item non-response rate text: 1% 
+	- average item non-response rate audio: 53% 
 
 </font size>
 
@@ -277,7 +285,7 @@ Political Science Review.</blockquote>
 
 <!-- - **Questionnaire Design**: closed-ended political trust question followed by open-ended probing question; voice condition only -->
 
--   **Data**: U.S. non-probability sample; n=1,276
+-   **Data**: U.S. non-probability sample; $n$=1,474 with 491 audio open answers
 
 </font size>
 
@@ -316,11 +324,15 @@ n_sadness=18, n_happiness=21.</figcaption>
 </figure>
 :::
 
+<!-- mention the formale nature of survey settings as a possible explanation and that speechbrain hasnt been used in social science research so far and we need more applications with other survey datasets -->
+
 ------------------------------------------------------------------------
 
 ## Summary
 
 <font size = "6">
+
+<!-- mention that first summary, than remaining minutes on methodological (!!) key takeaways  -->
 
 ::: fragment
 -   Web surveys allow to collect narrative answers that provide valuable
