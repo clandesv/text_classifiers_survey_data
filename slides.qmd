@@ -165,7 +165,7 @@ Supervised classification approach:
 ## Study 1: Results
 
 <figure>
-  <table style="font-size: 22px;">
+  <table style="font-size: 20px;">
     <tbody>
       <tr style="height: 40px;">
         <td style="height: 40px;"><strong>ID</strong></td>
@@ -211,6 +211,17 @@ Supervised classification approach:
   </table>
  <figcaption>Table 2: Illustration of exemplary data. <em>Note:</em> n=7,497.</figcaption>
 </figure>
+
+
+::: fragment
+<figure>
+
+<img src="paper1/regression-plot-disputation.png"/>
+
+<figcaption>Figure 2: Associations and Trust Scores. <em>Note.</em> CIs are 95% and 90%.</figcaption>
+
+</figure>
+:::
 
 
 ------------------------------------------------------------------------
@@ -268,7 +279,7 @@ Supervised classification approach:
 
 <img src="paper2/information-content-summary.png"/>
 
-<figcaption>Figure 2: Information Content Measures across Questions.<br>
+<figcaption>Figure 3: Information Content Measures across Questions.<br>
 <em>Note.</em> CIs are 95%, n_vote-choice: 830 (audio: 225, text: 605),
 n_future-children: 1,337 (audio: 389, text: 748)</figcaption>
 
@@ -322,7 +333,7 @@ n_future-children: 1,337 (audio: 389, text: 748)</figcaption>
 
 <img src="paper3/workflow.excalidraw.png"/>
 
-<figcaption>Figure 3: Methods for Sentiment and Emotion
+<figcaption>Figure 4: Methods for Sentiment and Emotion
 Analysis.</figcaption>
 
 
@@ -335,11 +346,10 @@ Analysis.</figcaption>
 ::: {style="text-align: center;"}
 <figure>
 
-<img src="paper3/results-emotion-short.png"/>
+<img src="paper3/results-emotion-long.png" width="650" height="550"/>
 
-<figcaption>Figure 4: Emotion Recognition for Speech Data with
-SpeechBrain.<br><em>Note.</em> n_neutral=408, n_anger=44, n_sadness=18,
-n_happiness=21.</figcaption>
+<figcaption>Figure 5: Emotions in Speech Data from SpeechBrain.<br><em>Note.</em> n_neutral=408, n_anger=44, n_sadness=18,
+n_happiness=21. Reference category (right): neutral.</figcaption>
 
 </figure>
 :::
