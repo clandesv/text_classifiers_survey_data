@@ -8,9 +8,17 @@ author:
 format:
   revealjs: 
     theme: [white, custom.css]
-    footer: "Landesvatter: Methods for the Classification of Data from Open-Ended Questions in Surveys"
+    #footer: "Landesvatter: Methods for the Classification of Data from Open-Ended Questions in Surveys"
     embed-resources: true
     slide-number: true
+    include-after-body: 
+      - text: |
+          <script type="text/javascript">
+          Reveal.addEventListener('slidechanged', (event) => {
+            const isSnOn = (event.currentSlide.dataset.hideSlideNumber !== 'true');
+            Reveal.configure({ slideNumber: isSnOn });
+          });
+          </script>
     preview-links: auto
     #logo: images/quarto.png
 editor: 
@@ -18,10 +26,9 @@ editor:
     wrap: 72
 ---
 
-## Research Questions and Motivation
+## Research Questions
 
-<!-- "Welcome to my defense of my thesis with the title .. " -->
-
+<!-- "Welcome to my disputation of my thesis with the title .. " -->
 
 <font size = "6">
 
@@ -32,25 +39,35 @@ survey questions?]{style="color:black"}</blockquote>
 contributions to substantial
 questions?]{style="color:black"}</blockquote>
 
-::: fragment
-Motivation:
-
-1️⃣ Increase in methods to collect natural language (e.g., smartphone surveys with voice technologies) requires the evaluation of available methods.
-:::
-
-::: fragment
-2️⃣ Special structure of open-ended survey answers (e.g., shortness, lack of context) requires the testing of ML methods for the survey context, e.g., word embeddings.
-:::
-
 </font size>
 
 ------------------------------------------------------------------------
 
-## Methods for Analyzing Data from Open-Ended Questions
+## Motivation
 
-![Table 1. Overview of methods for classifying open-ended survey
-responses. Source: Own
-depiction.](table-methods-colored.png "Overview of methods for classifying open-ended survey responses.")
+<font size = "6">
+
+::: fragment
+1️⃣ Increase in methods to collect natural language (e.g., smartphone
+surveys with voice technologies) requires the evaluation of available classification methods.
+:::
+
+::: fragment
+2️⃣ Special structure of open-ended survey answers (e.g., shortness, lack
+of context) requires the testing of machine learning methods for the survey context.
+:::
+
+::: fragment
+- Fully manual: no automation
+- Semi-automated: supervised ML, pre-trained models, prompt-based learning
+- Fully automated: unsupervised ML, clustering methods, topic models
+:::
+
+:::fragment 
+3️⃣ Open answers have the potential to equip researchers with rich data useful for various subjects of research.
+:::
+
+</font size>
 
 ------------------------------------------------------------------------
 
@@ -58,20 +75,31 @@ depiction.](table-methods-colored.png "Overview of methods for classifying open-
 
 <font size = "6">
 
-| Study 1                                                                                                        | Study 2                                                                                             | Study 3                                                                            |
-|-------------------------|-------------------------|-----------------------|
-| How valid are trust survey measures? New insights from open-ended probing data and supervised machine learning | Open-ended survey questions: A comparison of information content in text and audio response formats | Asking Why: Is there an Affective Component of Political Trust Ratings in Surveys? |
++-------------------------+-----------------------+------------------+
+| Study 1                 | Study 2               | Study 3          |
++=========================+=======================+==================+
+| How valid are trust     | Open-ended survey     | Asking Why: Is   |
+| survey measures? New    | questions: A          | there an         |
+| insights from           | comparison of         | Affective        |
+| open-ended probing data | information content   | Component of     |
+| and supervised machine  | in text and audio     | Political Trust  |
+| learning                | response formats      | Ratings in       |
+|                         |                       | Surveys?         |
++-------------------------+-----------------------+------------------+
+
+
++-------------------------+-----------------------+--------------------+
+| Research Fields         |                       |                    |
++=========================+=======================+====================+
+| Measurement equivalence | Questionnaire Design  | Emotion Analysis   |
++-------------------------+-----------------------+--------------------+
+
 
 </font size>
 
 ------------------------------------------------------------------------
 
-## How valid are trust survey measures? New insights from open-ended probing data and supervised machine learning {background-image="paper1/theory.png" background-size="80%" background-opacity="0.4"}
-
-<blockquote>Landesvatter, C., & Bauer, P. C. (2024). How Valid Are Trust
-Survey Measures? New Insights From Open-Ended Probing Data and
-Supervised Machine Learning. Sociological Methods & Research, 0(0).
-https://doi.org/10.1177/00491241241234871</blockquote>
+## <font size = "10"> Study 1:<br>"How valid are trust survey measures? New insights from open-ended probing data and supervised machine learning"<br>(Published in Sociological Methods & Research)</font size> {background-image="paper1/theory.png" background-size="80%" background-opacity="0.2"}
 
 <!-- The first study is titled "..." and here I investigated whether we can rely on supervised machine learning to learn something about the measurement validity of survey questions -->
 
@@ -83,18 +111,16 @@ https://doi.org/10.1177/00491241241234871</blockquote>
 
 -   **Background**: ongoing debates about which type of trust survey
     researchers are measuring with traditional survey items (i.e.,
-    equivalence debate cf. Bauer & Freitag 2018[^1])
+    equivalence debate cf. Bauer & Freitag 2018)
 
 -   **Research Question**: How valid are traditional trust survey
     measures?
-    
-- **Questionnaire Design**: 5 open-ended questions per respondent, block-randomized order
-    
-- **Data**: U.S. non-probability sample; $n$=1,500 with 7,497 open answers
 
-[^1]: Bauer, P. C., and M. Freitag. 2018. “Measuring Trust.” Pp. 1–27 in
-    The Oxford Handbook of Social and Political Trust, edited by E. M.
-    Uslaner. Oxford University Press.
+-   **Questionnaire Design**: 5 open-ended questions per respondent,
+    block-randomized order
+
+-   **Data**: U.S. non-probability sample; $n$=1,500 with 7,497 open
+    answers
 
 </font size>
 
@@ -104,19 +130,28 @@ https://doi.org/10.1177/00491241241234871</blockquote>
 
 <font size = "6">
 
-<figure> 
-    <img src="paper1/methods.png" width = "850" height="270"/> 
-    <figcaption>Figure 1: Supervised Classification for a Trust Question.</figcaption>
+<figure>
+
+<img src="paper1/methods.png" width="850" height="270"/>
+
+<figcaption>Figure 1: Supervised Classification for a Trust
+Question.</figcaption>
+
 </figure>
 
 ::: fragment
 Supervised classification approach:
 
--  1.  manual labeling of randomly sampled documents
-            (n=\[[1,000]{style="color:orange"}/[1,500]{style="color:blue"}\])
+-   
 
-- 2.  fine-tuning the weights of two BERT[^2] models, using the manually coded data as training
-            data, to classify the remaining n=\[[6,500]{style="color:orange"}/[6,000]{style="color:blue"}\]
+    1.  manual labeling of randomly sampled documents
+        (n=\[[1,000]{style="color:orange"}/[1,500]{style="color:blue"}\])
+
+-   
+
+    2.  fine-tuning the weights of two BERT[^2] models, using the
+        manually coded data as training data, to classify the remaining
+        n=\[[6,500]{style="color:orange"}/[6,000]{style="color:blue"}\]
 :::
 
 [^2]: bidirectional encoder representations from transformers
@@ -180,13 +215,7 @@ Supervised classification approach:
 
 ------------------------------------------------------------------------
 
-
-## Open-ended survey questions: A comparison of information content in text and audio response formats {background-image="paper2/typing-vs-speaking.png" background-size="60%" background-opacity="0.4"}
-
-<blockquote>Landesvatter, C., & Bauer, P. C. (February 2024). Open-ended
-survey questions: A comparison of information content in text and audio
-response formats. [<u>Working Paper</u>]{style="color:black"} submitted
-to Public Opinion Quarterly.</blockquote>
+## <font size = "10"> Study 2:<br>"Open-ended survey questions: A comparison of information content in text and audio response formats"<br>(Submitted to Public Opinion Quarterly)</font size> {background-image="paper2/typing-vs-speaking.png" background-size="60%" background-opacity="0.2"}
 
 <!-- The second study is titled "..." and here I investigated whether we can use computational measures and ML to inform survey questionnaire design research -->
 
@@ -198,18 +227,13 @@ to Public Opinion Quarterly.</blockquote>
 
 -   **Background**: requests for spoken answers are assumed to trigger
     an open narration with more intuitive and spontaneous answers (e.g.,
-    Gavras et al. 2022[^3])
+    Gavras et al. 2022)
 
 -   **Research Question**: Are there differences in information content
     between responses given in voice and text formats?
 
 -   **Experimental Design**: random assignment into either the text or
     voice condition
-
-[^3]: Gavras, K. et al. 2022. “Innovating the collection of open-ended
-    answers: The linguistic and content characteristics of written and
-    oral answers to political attitude questions.” Journal of the Royal
-    Statistical Society. Series A, 185(3):872-890.
 
 </font size>
 
@@ -219,14 +243,19 @@ to Public Opinion Quarterly.</blockquote>
 
 <font size = "6">
 
--   **Operationalization** of information content in open answers via application of measures from information theory and machine learning
-    -   response length, number of topics, response entropy
-    
-- **Questionnaire Design**: 9 open-ended questions per respondent, block-randomized order
+-   **Operationalization** of information content in open answers via
+    application of measures from information theory and machine learning
 
--   **Data**: U.S. non-probability sample; $n$=1,461 with $n_{text}$=800 and $n_{audio}$=661
-	- average item non-response rate text: 1% 
-	- average item non-response rate audio: 53% 
+    -   response length, number of topics, response entropy
+
+-   **Questionnaire Design**: 9 open-ended questions per respondent,
+    block-randomized order
+
+-   **Data**: U.S. non-probability sample; $n$=1,461 with $n_{text}$=800
+    and $n_{audio}$=661
+
+    -   average item non-response rate text: 1%
+    -   average item non-response rate audio: 53%
 
 </font size>
 
@@ -252,14 +281,11 @@ n_future-children: 1,337 (audio: 389, text: 748)</figcaption>
 
 <!--     summarise(non_missing_count = sum(!is.na(text_answer), na.rm = TRUE)) -->
 
+<!-- While the finding that voice answers have a higher response length is common knowledge, we could contribute to the finding that other measures of information content, such as the number of topics, support voice answer -->
+
 ------------------------------------------------------------------------
 
-## Asking Why: Is there an Affective Component of Political Trust Ratings in Surveys? {background-image="paper3/dreamstudio-emotion-analysis.png" background-size="40%" background-opacity="0.4"}
-
-<blockquote>Landesvatter, C., & Bauer, P. C. (March 2024). Asking Why:
-Is there an Affective Component of Political Trust Ratings in Surveys?.
-[<u>Working Paper</u>]{style="color:black"} submitted to American
-Political Science Review.</blockquote>
+## <font size = "10"> Study 3:<br>"Asking Why: Is there an Affective Component of Political Trust Ratings in Surveys?"<br>(Submitted to American Political Science Review)</font size> {background-image="paper3/dreamstudio-emotion-analysis.png" background-size="40%" background-opacity="0.2"}
 
 <!-- The third study is titled "..." and here I investigated whether I can use sentiment and emotion recognition and importantly speech emotion recognition to learn about political trust -->
 
@@ -272,20 +298,17 @@ Political Science Review.</blockquote>
 -   **Background**: conventional notion stating that trust originates
     from informed, rational, and consequential judgments is challenged
     by the idea of an "affect-based" form of (political) trust (e.g.,
-    Theiss-Morse and Barton 2017[^4])
+    Theiss-Morse and Barton 2017)
 
 -   **Research Question**: Are individual trust judgments in surveys
     driven by affective rationales?
-    
--   **Questionnaire Design**: voice condition only
 
-[^4]: Theiss-Morse, E., and D. Barton. 2017. “Emotion, Cognition, and
-    Political Trust.” Pp. 160–75 in Handbook on Political Trust. Edward
-    Elgar Publishing.
+-   **Questionnaire Design**: voice condition only
 
 <!-- - **Questionnaire Design**: closed-ended political trust question followed by open-ended probing question; voice condition only -->
 
--   **Data**: U.S. non-probability sample; $n$=1,474 with 491 audio open answers
+-   **Data**: U.S. non-probability sample; $n$=1,474 with 491 audio open
+    answers
 
 </font size>
 
@@ -300,11 +323,8 @@ Political Science Review.</blockquote>
 <img src="paper3/workflow.excalidraw.png"/>
 
 <figcaption>Figure 3: Methods for Sentiment and Emotion
-Analysis[^5].</figcaption>
+Analysis.</figcaption>
 
-[^5]: Pérez, J. et al. 2023. “Pysentimiento: A Python Toolkit for
-    Opinion Mining and Social NLP Tasks.” arXiv.<br>Ravanelli, M. et al.
-    2021. “SpeechBrain: A General-Purpose Speech Toolkit.” arXiv.
 
 </figure>
 
@@ -318,17 +338,17 @@ Analysis[^5].</figcaption>
 <img src="paper3/results-emotion-short.png"/>
 
 <figcaption>Figure 4: Emotion Recognition for Speech Data with
-SpeechBrain.<br><em>Note.</em> n_neutral=408, n_anger=44,
-n_sadness=18, n_happiness=21.</figcaption>
+SpeechBrain.<br><em>Note.</em> n_neutral=408, n_anger=44, n_sadness=18,
+n_happiness=21.</figcaption>
 
 </figure>
 :::
 
-<!-- mention the formale nature of survey settings as a possible explanation and that speechbrain hasnt been used in social science research so far and we need more applications with other survey datasets -->
+<!-- mention the formal nature of survey settings as a possible explanation and that speechbrain hasnt been used in social science research so far and we need more applications with other survey datasets -->
 
 ------------------------------------------------------------------------
 
-## Summary
+## Summary and Conclusions
 
 <font size = "6">
 
@@ -342,8 +362,7 @@ n_sadness=18, n_happiness=21.</figcaption>
 :::
 
 ::: fragment
--   New technologies (smartphone surveys, speech-to-text algorithms) can
-    be used to collect such data in innovative ways
+-   New technologies (e.g., speech recognition) allow innovative data collection
 :::
 
 ::: fragment
@@ -363,115 +382,90 @@ n_sadness=18, n_happiness=21.</figcaption>
 
 ------------------------------------------------------------------------
 
-## Machine Learning and Open-ended Answers
+## Summary and Conclusions
+### Semi-automated methods for open survey answers
+
+<!-- For my Conclusion, I want to emphasize the usefulness of semi-automated methods for social science application -->
 
 <font size = "6">
 
 ::: fragment
-<blockquote style="color:blue">
-
-Large Language models (LLMs) facilitate the accessibility and
-implementation of semi-automated methods.
-
-</blockquote>
+- supervised machine learning requires sufficient and high-quality training data (i.e., labeled examples)
 :::
 
 ::: fragment
--   traditional semi-automated methods, e.g. supervised ML, require sufficient and high-quality
-    training data (i.e., labeled examples)
+- LLMs allow modeling with fewer training data and domain-specific knowledge (fine-tuning and prompting techniques)
 
--   surveys often don't provide thousands of documents
-    <!-- issues of item response rates to OEQs, experimental conditions, structure of open answer, etc. -->
-    
-- LLMs allow less resource-intensive and domain-specific finetuning and remove the need to build complex systems from scratch
- 
--  E.g., [Study 1]{style="color:orange"}: Random Forest with 1,500 labeled examples versus BERT
-
-<!-- higher accuracy for BERT (87-95) than RF (83-92) for the same set of labeled documents -->
-    
+	-   E.g., [Study 1]{style="color:orange"}: BERT outperforms Random Forest with 1,500 labeled examples
 :::
 
 </font size>
 
+<!-- traditional methods often dont work as supposed when we dont have enough training data, because surveys often don't provide thousands of documents -->
+<!-- issues of item response rates to OEQs, experimental conditions, structure of open answer, etc. -->
+<!-- higher accuracy for BERT (87-95) than RF (83-92) for the same set of labeled documents -->
+
 ------------------------------------------------------------------------
 
-## Machine Learning and Open-ended Answers
+## Summary and Conclusions
 
 <font size = "6">
 
--   But: consider the complexity and limited transparency of these
-    models
-    -   always start with simple methods and evaluate
+- But LLMs suffer from high complexity and limited transparency 
+    -   start with simple methods and evaluate
         -   [Study 1]{style="color:orange"}: Random Forest → BERT
         -   [Study 3]{style="color:orange"}: dictionary approach → deep
             learning
-    -   accuracy-explainability trade-off
-
-
-</font size>
-
-------------------------------------------------------------------------
-
-## Machine Learning and Open-Ended Answers
-
-<font size = "6">
-
-<blockquote style="color:blue">
-
-Increasing number of possibilities to reduce manual input to a minimum.
-
-</blockquote>
+    -   trade off between accuracy and explainability
 
 ::: fragment
--   [Study 3]{style="color:orange"}: zero-shot prompting result in
-    similar findings than fine-tuned versions of pre-trained models
-    (e.g., overlap of 80% of GPT-prompting vs. pysentimiento)
-:::
-
-::: fragment
--   deciding on a suitable number of manual examples depends on various
-    factors such as the task difficulty
-    -   few-shot versus zero-shot prompting
-:::
-
-::: fragment
--   the lesser the manual input, the more important the manual
-    inspection of results (e.g., [Study 2]{style="color:orange"}: what
-    are high-entropy documents?)
-    <!-- (Study 2 entropy, study 3 sentiment with simple dict approach) -->
-    <!-- Study 3: which voice answers sound happy -->
+- Fully manual, semi-automated, or fully automated?
+	- task difficulty, sample size, structure of the answers, state of previous research, accuracy and transparency, available resources 
 :::
 
 </font size>
 
-------------------------------------------------------------------------
+<!-- - difficulty of the given task (e.g., general versus specific codes) -->
 
-## Fully manual, semi-automated, or fully automated?
+<!-- -   size of the available dataset (e.g., n, splits by experimental -->
+<!--     conditions) -->
 
-<font size = "6">
+<!-- -   structure of the open answers (e.g., length, amount of context → -->
+<!--     this depends on the question design) -->
 
-::: fragment
-The final decision for one of the approaches depends on:
+<!-- -   the amount and state of previous research (e.g., available code -->
+<!--     schemes) -->
 
--   difficulty of the given task (e.g., general versus specific codes)
+<!-- -   desired accuracy and desired transparency -->
 
--   size of the available dataset (e.g., n, splits by experimental
-    conditions)
-    
--   structure of the open answers (e.g., length, amount of context →
-    this depends on the question design)
-    
--   the amount and state of previous research (e.g., available code
-    schemes)
-    
--   desired accuracy and desired transparency
-
--   available resources (e.g., human power, computational power (GPU),
-    time resources)
-:::
-
-</font size>
+<!-- -   available resources (e.g., human power, computational power (GPU), -->
+<!--     time resources) -->
 
 ------------------------------------------------------------------------
 
 ## <font size = "14"> Thank you for your Attention! </font size> {.center background-image="overview-3-studies.png" background-size="150%" background-opacity="0.4"}
+
+------------------------------------------------------------------------
+
+## References {data-hide-slide-number="true"}
+
+<font size = "5">
+
+Bauer, P. C., and M. Freitag. 2018. “Measuring Trust.” Pp. 1–27 in
+    The Oxford Handbook of Social and Political Trust, edited by E. M.
+    Uslaner. Oxford University Press.
+
+Gavras, K. et al. 2022. “Innovating the collection of open-ended
+    answers: The linguistic and content characteristics of written and
+    oral answers to political attitude questions.” Journal of the Royal
+    Statistical Society. Series A, 185(3):872-890.
+    
+Pérez, J. et al. 2023. “Pysentimiento: A Python Toolkit for
+    Opinion Mining and Social NLP Tasks.” arXiv.<br>Ravanelli, M. et al.
+    2021. “SpeechBrain: A General-Purpose Speech Toolkit.” arXiv
+    
+Theiss-Morse, E., and D. Barton. 2017. “Emotion, Cognition, and
+    Political Trust.” Pp. 160–75 in Handbook on Political Trust. Edward
+    Elgar Publishing.
+    
+</font size>
