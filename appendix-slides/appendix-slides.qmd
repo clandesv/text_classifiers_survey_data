@@ -131,3 +131,5 @@ n_sadness=18, n_happiness=21.</figcaption>
 
 <!-- dictionary approaches -->
 
+<!-- entropyfindings: /Users/camillelandesvatter/Library/CloudStorage/GoogleDrive-landesvatterc@gmail.com/Meine Ablage/Thesis Defense 2024/text_classifiers_survey_data/text_classifiers_survey_data/paper2/information-content-summary.png -->
+
