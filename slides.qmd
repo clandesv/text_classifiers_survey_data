@@ -36,8 +36,7 @@ editor:
 survey questions?]{style="color:black"}</blockquote>
 
 <blockquote>[Can we leverage these methods to make empirical
-contributions to substantial
-questions?]{style="color:black"}</blockquote>
+contributions to different research areas?]{style="color:black"}</blockquote>
 
 </font size>
 
@@ -57,15 +56,35 @@ surveys with voice technologies) requires the evaluation of available classifica
 of context) requires the testing of machine learning methods for the survey context.
 :::
 
-::: fragment
-- Fully manual: no automation
-- Semi-automated: supervised ML, pre-trained models, prompt-based learning
-- Fully automated: unsupervised ML, clustering methods, topic models
+:::fragment 
+3️⃣ The potential of open answers to equip researchers with rich data useful for various research areas.
 :::
 
-:::fragment 
-3️⃣ Open answers have the potential to equip researchers with rich data useful for various subjects of research.
-:::
+</font size>
+
+------------------------------------------------------------------------
+
+## Methods for Analyzing Data from Open-Ended Questions
+
+<font size = "6">
+
+<figure>
+<table>
+<tbody>
+<tr>
+<td>&nbsp;Fully Manual</td>
+<td>&nbsp;Semi-automated</td>
+<td>Fully automated</td>
+</tr>
+<tr>
+<td>&nbsp;No automation, no machine involvement</td>
+<td>Supervised ML, pre-trained models (fine-tuning and off-the-shelf), prompt-based learning</td>
+<td>Unsupervised ML, clustering methods, topic models</td>
+</tr>
+</tbody>
+</table>
+<figcaption>Table 1: Overview Classification Methods and Examples. <em>Source:</em> Own depiction.</figcaption>
+</figure>
 
 </font size>
 
@@ -93,7 +112,6 @@ of context) requires the testing of machine learning methods for the survey cont
 +=========================+=======================+====================+
 | Measurement equivalence | Questionnaire Design  | Emotion Analysis   |
 +-------------------------+-----------------------+--------------------+
-
 
 </font size>
 
@@ -255,9 +273,10 @@ Supervised classification approach:
 <font size = "6">
 
 -   **Operationalization** of information content in open answers via
-    application of measures from information theory and machine learning
-
-    -   response length, number of topics, response entropy
+    
+    - response length
+    - number of topics
+    - response entropy
 
 -   **Questionnaire Design**: 9 open-ended questions per respondent,
     block-randomized order
@@ -269,6 +288,8 @@ Supervised classification approach:
     -   average item non-response rate audio: 53%
 
 </font size>
+
+<!-- entropy: how much new information does the document contain, we are the first -->
 
 ------------------------------------------------------------------------
 
@@ -318,6 +339,8 @@ n_future-children: 1,337 (audio: 389, text: 748)</figcaption>
     answers
 
 </font size>
+
+<!-- I am the first to research this -->
 
 ------------------------------------------------------------------------
 
@@ -378,8 +401,7 @@ n_happiness=21. Reference category (right): neutral.</figcaption>
     -   [Study 2]{style="color:blue"}: oral response formats in web surveys (cf. Gavras et al. 2022)
     -   [Study 3]{style="color:blue"}: cognitive-versus-affective debate
         in political trust research (cf. Theiss-Morse and Barton 2017)
-    -   [Study 1-3]{style="color:blue"}: item and data quality in
-        general
+    -   [Study 1-3]{style="color:blue"}: item and data quality
 :::
 
 </font size>
@@ -394,40 +416,32 @@ n_happiness=21. Reference category (right): neutral.</figcaption>
 <font size = "6">
 
 ::: fragment
-- supervised machine learning requires sufficient and high-quality training data (i.e., labeled examples)
+- supervised ML requires sufficient and high-quality labeled data
 :::
 
 ::: fragment
 - LLMs allow modeling with fewer training data and domain-specific knowledge (fine-tuning and prompting techniques)
 
-	-   E.g., [Study 1]{style="color:orange"}: BERT outperforms Random Forest with 1,500 labeled examples
+	-   E.g., [Study 1]{style="color:orange"}: Random Forest vs. BERT n=1,500
 :::
+
+::: fragment
+- But LLMs suffer from high complexity and limited transparency 
+    -   start with simple methods and evaluate (e.g., dictionary approach → deep
+            learning in [Study 3]{style="color:orange"})
+    -   trade off between accuracy and explainability
+:::
+
+::: fragment
+- additionally consider: task difficulty, sample size, structure of the answers, state of previous research, available resources, etc.
+:::
+
 
 </font size>
 
 <!-- traditional methods often dont work as supposed when we dont have enough training data, because surveys often don't provide thousands of documents -->
 <!-- issues of item response rates to OEQs, experimental conditions, structure of open answer, etc. -->
 <!-- higher accuracy for BERT (87-95) than RF (83-92) for the same set of labeled documents -->
-
-------------------------------------------------------------------------
-
-## Summary and Conclusions
-
-<font size = "6">
-
-- But LLMs suffer from high complexity and limited transparency 
-    -   start with simple methods and evaluate
-        -   [Study 1]{style="color:orange"}: Random Forest → BERT
-        -   [Study 3]{style="color:orange"}: dictionary approach → deep
-            learning
-    -   trade off between accuracy and explainability
-
-::: fragment
-- Fully manual, semi-automated, or fully automated?
-	- task difficulty, sample size, structure of the answers, state of previous research, accuracy and transparency, available resources, etc.
-:::
-
-</font size>
 
 <!-- - difficulty of the given task (e.g., general versus specific codes) -->
 
