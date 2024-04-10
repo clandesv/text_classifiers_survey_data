@@ -292,8 +292,6 @@ n_future-children: 1,337 (audio: 389, text: 748)</figcaption>
 
 <!--     summarise(non_missing_count = sum(!is.na(text_answer), na.rm = TRUE)) -->
 
-<!-- While the finding that voice answers have a higher response length is common knowledge, we could contribute to the finding that other measures of information content, such as the number of topics, support voice answer -->
-
 ------------------------------------------------------------------------
 
 ## <font size = "10"> Study 3:<br>"Asking Why: Is there an Affective Component of Political Trust Ratings in Surveys?"<br>(Submitted to American Political Science Review)</font size> {background-image="paper3/dreamstudio-emotion-analysis.png" background-size="40%" background-opacity="0.2"}
@@ -315,8 +313,6 @@ n_future-children: 1,337 (audio: 389, text: 748)</figcaption>
     driven by affective rationales?
 
 -   **Questionnaire Design**: voice condition only
-
-<!-- - **Questionnaire Design**: closed-ended political trust question followed by open-ended probing question; voice condition only -->
 
 -   **Data**: U.S. non-probability sample; $n$=1,474 with 491 audio open
     answers
@@ -383,8 +379,7 @@ n_happiness=21. Reference category (right): neutral.</figcaption>
     -   [Study 3]{style="color:blue"}: cognitive-versus-affective debate
         in political trust research (cf. Theiss-Morse and Barton 2017)
     -   [Study 1-3]{style="color:blue"}: item and data quality in
-        general (e.g., associations, information content, sentiment,
-        emotions)
+        general
 :::
 
 </font size>
@@ -429,7 +424,7 @@ n_happiness=21. Reference category (right): neutral.</figcaption>
 
 ::: fragment
 - Fully manual, semi-automated, or fully automated?
-	- task difficulty, sample size, structure of the answers, state of previous research, accuracy and transparency, available resources 
+	- task difficulty, sample size, structure of the answers, state of previous research, accuracy and transparency, available resources, etc.
 :::
 
 </font size>
