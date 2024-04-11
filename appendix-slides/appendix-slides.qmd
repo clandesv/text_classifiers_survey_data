@@ -22,13 +22,25 @@ editor:
     wrap: 72
 ---
 
+## <font size = "14"> Appendix Intro </font size> {.center}
+
+------------------------------------------------------------------------
+
+## Overview of Methods for Studies 1-3
+
+::: {style="text-align: center;"}
+<figure>
+
+<img src="../table-methods-colored.png"/>
+
+<figcaption>Table 1: Overview Classification Methods and Examples. <em>Source:</em> Own depiction.</figcaption>
+
+</figure>
+:::
+
+------------------------------------------------------------------------
+
 ## Characteristics of Open-Ended Survey Answers
-
-<!-- - "survey questions that do not include a set of response options” (Züll, 2016, p. 1) -->
-
-<!-- - "require respondents to formulate a response in their own words and to express it verbally or in writing” (Züll, 2016, p. 1) -->
-
-<!-- - ≠ closed-ended questions with answer categories presented in a closed form (Inui et al., 2001, p. 1) -->
 
 ```{r wordcloud-survey-answers, out.width='100%', fig.align = "center", fig.show='hold'}
 #| label: fig-1
@@ -78,31 +90,135 @@ ggplot(data, aes(label = text_answer)) +
 
 ------------------------------------------------------------------------
 
+## <font size = "14"> Appendix Study 1 </font size> {.center}
+
+------------------------------------------------------------------------
+
 ## Study 1: Results
 
 ::: {style="text-align: center;"}
 <figure>
 
-<img src="../paper1/table_exemplary_data.png"/>
+<img src="../paper1/appendix/study1-result1.png"/>
 
-<figcaption>Table 2: Illustration of exemplary data. <em>Note:</em>
-n=7,497.</figcaption>
+<figcaption>Figure 1: Distribution of associations with known people across trust measures. <em>Note:</em> CIs are 95%, n=7,497.</figcaption>
 
 </figure>
+:::
 
-::: fragment
+------------------------------------------------------------------------
+
+## Study 1: Results
+
+::: {style="text-align: center;"}
 <figure>
 
-<img src="../paper1/regression-plot-disputation.png"/>
+<img src="../paper1/appendix/study1-result2.png"/>
 
-<figcaption>Figure 1: Trust Scores by Associations for the Most People
-Question.<br> <em>Note:</em> CIs are 90% and 95%, n=1,499.</figcaption>
+<figcaption>Figure 2: Distribution of associations and their sentiment across trust measures. <em>Note:</em> CIs are 95%.</figcaption>
+
+</figure>
+:::
+
+------------------------------------------------------------------------
+
+## Study 1: Results
+
+::: {style="text-align: center;"}
+<figure>
+
+<img src="../paper1/appendix/regression-plot-disputation-middle.png"/>
+
+<figcaption>Figure 3: Associations and trust scores across different measures. <em>Note:</em> CIs are 95% and 90%.</figcaption>
+
+</figure>
+:::
+
+------------------------------------------------------------------------
+
+## <font size = "14"> Appendix Study 2 </font size> {.center}
+
+------------------------------------------------------------------------
+
+## Study 2: Item Nonresponse by Condition
+
+::: {style="text-align: center;"}
+<figure>
+
+<img src="../paper2/appendix/study2-response-rates.png"/>
+
+<figcaption>Figure 5: Item response rates by experimental condition and item.</figcaption>
+
+</figure>
+:::
+
+------------------------------------------------------------------------
+
+## Study 2: Sample Composition (Sample ↔ Population)
+
+::: {style="text-align: center;"}
+<figure>
+
+<img src="../paper2/appendix/study2-sample-composition-census.png"/>
+
+<figcaption>Table 1: Sample Characteristics in Comparison to US Census Data (2015).</figcaption>
+
+</figure>
+:::
+
+------------------------------------------------------------------------
+
+## Study 2: Covariate Balance (Text and voice)
+
+
+
+::: {style="text-align: center;"}
+<figure>
+
+<img src="../paper2/appendix/study2-cov-balance.png" width="720" height="570" />
+
+<figcaption>Table 2: Covariate Balance between Text and Voice Condition.</figcaption>
 
 </figure>
 :::
 
 
-<!-- sum(!is.na(data$probing_answer[data$variable=="Most people"])) -->
+
+
+
+------------------------------------------------------------------------
+
+## Study 2: Results
+
+::: {style="text-align: center;"}
+<figure>
+
+<img src="../paper2/appendix/information-content-summary.png"/>
+
+<figcaption>Figure 6: Information Content Measures across Questions.<br>
+<em>Note.</em> CIs are 95%, n_vote-choice: 830 (audio: 225, text: 605),
+n_future-children: 1,337 (audio: 389, text: 748)</figcaption>
+
+</figure>
+:::
+
+------------------------------------------------------------------------
+
+## Study 2: Results
+
+::: {style="text-align: center;"}
+<figure>
+
+<img src="../paper2/appendix/study2-entropy.png"/>
+
+<figcaption>Figure 6: Exemplary Survey Answers by Entropy.</figcaption>
+
+</figure>
+:::
+
+------------------------------------------------------------------------
+
+## <font size = "14"> Appendix Study 3 </font size> {.center}
 
 ------------------------------------------------------------------------
 
@@ -111,26 +227,61 @@ Question.<br> <em>Note:</em> CIs are 90% and 95%, n=1,499.</figcaption>
 ::: {style="text-align: center;"}
 <figure>
 
-<img src="paper3/results-emotion.png" width="650" height="550"/>
+<img src="../paper3/appendix/study3-results1.png"/>
 
-<figcaption>Figure 3: Emotion Recognition for Speech Data with
-SpeechBrain. <em>Note.</em> CIs are 95%, n_neutral=408, n_anger=44,
-n_sadness=18, n_happiness=21.</figcaption>
+<figcaption>Figure 7: Sentiment Classification with three categories by classifier (BERT vs. GPT).<br>
+<em>Note.</em> n=491 open-ended answers.</figcaption>
+
+</figure>
+:::
+
+<!-- wie schneidet die speech emotion recognition im Vergleich zu den text based classifications ab? -->
+<!-- Text recognizes words and their meanings, here we find sentiment, but audio only includes tonal cues, here we find no such variation, but again if we check emolex (text-based emotion recognition) we find something -->
+
+------------------------------------------------------------------------
+
+## Study 3: Results
+
+::: {style="text-align: center;"}
+<figure>
+
+<img src="../paper3/appendix/study3-results-2.png"/>
+
+<figcaption>Figure 8: Linear model of sentiment and a five-category trust score (bi- and multivariate).<br>
+<em>Note.</em> n=491 open-ended answers, GPT classification.</figcaption>
+
+</figure>
+:::
+
+------------------------------------------------------------------------
+
+## Study 3: Results
+
+::: {style="text-align: center;"}
+<figure>
+
+<img src="../paper3/appendix/study3-results-dict.png"/>
+
+<figcaption>Figure 9: Sentiment Classification with five categories by classifier (AFINN vs. VADER).<br>
+<em>Note.</em> n=496 open-ended answers.</figcaption>
+
+</figure>
+:::
+
+------------------------------------------------------------------------
+
+## Study 3: Results
+
+::: {style="text-align: center;"}
+<figure>
+
+<img src="../paper3/appendix/study3-results-emolex.png"/>
+
+<figcaption>Figure 9: Emotion Classification obtained from EmoLex.<br>
+<em>Note.</em> n=404 open-ended answers, multi-class assignment.</figcaption>
 
 </figure>
 :::
 
 
-<!-- wie schneidet die speech emotion recognition im Vergleich zu den text based classifications ab? -->
-<!-- Text recognizes words and their meanings (based on word embeddings), here we find sentiment (APPENDIX!), but audio only includes tonal cues, here we find no such variation -->
 
-
-<!-- tables references to population -->
-
-<!-- folie auf der für alle paper die methoden genannt sind -->
-
-<!-- dictionary approaches -->
-
-<!-- entropyfindings: /Users/camillelandesvatter/Library/CloudStorage/GoogleDrive-landesvatterc@gmail.com/Meine Ablage/Thesis Defense 2024/text_classifiers_survey_data/text_classifiers_survey_data/paper2/information-content-summary.png -->
-
-<!-- entropy examples -->
