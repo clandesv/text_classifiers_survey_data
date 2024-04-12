@@ -247,7 +247,7 @@ Supervised classification approach:
 
 -   **Operationalization** of information content in open answers via
     
-    - response length (# of characters)
+    - response length (# of words)
     - number of topics
     - response entropy
 
