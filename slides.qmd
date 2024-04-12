@@ -301,7 +301,7 @@ n_future-children: 1,337 (audio: 389, text: 748)</figcaption>
 -   **Background**: conventional notion of rational trust is challenged by the idea of an "affect-based" form of political trust (e.g., Theiss-Morse and Barton 2017)
 
 -   **Research Question**: Are individual trust judgments in surveys
-    driven by affective states?
+    driven by affective components?
 
 -   **Questionnaire Design**: audio condition only
 
