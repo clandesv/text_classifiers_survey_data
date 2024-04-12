@@ -47,44 +47,18 @@ contributions to different research areas?]{style="color:black"}</blockquote>
 <font size = "6">
 
 ::: fragment
-1️⃣ Increase in methods to collect natural language (e.g., smartphone
-surveys with voice technologies) requires the evaluation of available classification methods.
+1️⃣ Increase in methods to collect natural language [(e.g., smartphone
+surveys with voice technologies)]{style="color:blue"} requires the evaluation of available classification methods [(i.e., fully manual, semi-automated, fully automated methods)]{style="color:blue"}.
 :::
 
 ::: fragment
-2️⃣ Special structure of open-ended survey answers (e.g., shortness, lack
-of context) requires the testing of machine learning methods for the survey context.
+2️⃣ Special structure of open-ended survey answers [(e.g., shortness, lack
+of context)]{style="color:blue"} requires the testing of machine learning methods for the survey context.
 :::
 
 :::fragment 
-3️⃣ The potential of open answers to equip researchers with rich data useful for various research areas.
+3️⃣ The potential of open answers to equip researchers with rich data useful for various research areas and debates.
 :::
-
-</font size>
-
-------------------------------------------------------------------------
-
-## Methods for Analyzing Data from Open-Ended Questions
-
-<font size = "6">
-
-<figure>
-<table>
-<tbody>
-<tr>
-<td>&nbsp;Fully Manual</td>
-<td>&nbsp;Semi-automated</td>
-<td>Fully automated</td>
-</tr>
-<tr>
-<td>&nbsp;No automation, no machine involvement</td>
-<td>Supervised ML, pre-trained models (fine-tuning and off-the-shelf), prompt-based learning</td>
-<td>Unsupervised ML, clustering methods, topic models</td>
-</tr>
-</tbody>
-</table>
-<figcaption>Table 1: Overview Classification Methods and Examples. <em>Source:</em> Own depiction.</figcaption>
-</figure>
 
 </font size>
 
@@ -108,7 +82,7 @@ of context) requires the testing of machine learning methods for the survey cont
 
 
 +-------------------------+-----------------------+--------------------+
-| Research Fields         |                       |                    |
+| Research Areas/Debates  |                       |                    |
 +=========================+=======================+====================+
 | Measurement equivalence | Questionnaire Design  | Emotion Analysis   |
 +-------------------------+-----------------------+--------------------+
@@ -117,7 +91,8 @@ of context) requires the testing of machine learning methods for the survey cont
 
 ------------------------------------------------------------------------
 
-## <font size = "10"> Study 1:<br>"How valid are trust survey measures? New insights from open-ended probing data and supervised machine learning"<br>(Published in Sociological Methods & Research)</font size> {background-image="paper1/theory.png" background-size="80%" background-opacity="0.2"}
+## <font size = "10"> Study 1:<br>"How valid are trust survey measures?<br>New insights from open-ended probing data and supervised machine learning"<br>(Published in Sociological Methods & Research)</font size> {.center}
+
 
 <!-- The first study is titled "..." and here I investigated whether we can rely on supervised machine learning to learn something about the measurement validity of survey questions -->
 
@@ -127,9 +102,7 @@ of context) requires the testing of machine learning methods for the survey cont
 
 <font size = "6">
 
--   **Background**: ongoing debates about which type of trust survey
-    researchers are measuring with traditional survey items (i.e.,
-    equivalence debate cf. Bauer & Freitag 2018)
+-   **Background**: debate about whether we are measuring the same type of trust across respondents (i.e., equivalence debate cf. Bauer & Freitag 2018)
 
 -   **Research Question**: How valid are traditional trust survey
     measures?
@@ -244,7 +217,7 @@ Supervised classification approach:
 
 ------------------------------------------------------------------------
 
-## <font size = "10"> Study 2:<br>"Open-ended survey questions: A comparison of information content in text and audio response formats"<br>(Submitted to Public Opinion Quarterly)</font size> {background-image="paper2/typing-vs-speaking.png" background-size="60%" background-opacity="0.2"}
+## <font size = "10"> Study 2:<br>"Open-ended survey questions: A comparison of information content in text and audio response formats"<br>(Under Review at Public Opinion Quarterly)</font size> {background-image="paper2/typing-vs-speaking.png" background-size="60%" background-opacity="0.1" .center}
 
 <!-- The second study is titled "..." and here I investigated whether we can use computational measures and ML to inform survey questionnaire design research -->
 
@@ -259,10 +232,10 @@ Supervised classification approach:
     Gavras et al. 2022)
 
 -   **Research Question**: Are there differences in information content
-    between responses given in voice and text formats?
+    between responses given in audio and text formats?
 
 -   **Experimental Design**: random assignment into either the text or
-    voice condition
+    audio condition
 
 </font size>
 
@@ -274,7 +247,7 @@ Supervised classification approach:
 
 -   **Operationalization** of information content in open answers via
     
-    - response length
+    - response length (# of characters)
     - number of topics
     - response entropy
 
@@ -315,7 +288,7 @@ n_future-children: 1,337 (audio: 389, text: 748)</figcaption>
 
 ------------------------------------------------------------------------
 
-## <font size = "10"> Study 3:<br>"Asking Why: Is there an Affective Component of Political Trust Ratings in Surveys?"<br>(Submitted to American Political Science Review)</font size> {background-image="paper3/dreamstudio-emotion-analysis.png" background-size="40%" background-opacity="0.2"}
+## <font size = "10"> Study 3:<br>"Asking Why: Is there an Affective Component of Political Trust Ratings in Surveys?"<br>(Submitted to American Political Science Review)</font size> {background-image="paper3/dreamstudio-emotion-analysis.png" background-size="40%" background-opacity="0.2" .center}
 
 <!-- The third study is titled "..." and here I investigated whether I can use sentiment and emotion recognition and importantly speech emotion recognition to learn about political trust -->
 
@@ -325,15 +298,12 @@ n_future-children: 1,337 (audio: 389, text: 748)</figcaption>
 
 <font size = "6">
 
--   **Background**: conventional notion stating that trust originates
-    from informed, rational, and consequential judgments is challenged
-    by the idea of an "affect-based" form of (political) trust (e.g.,
-    Theiss-Morse and Barton 2017)
+-   **Background**: conventional notion of rational trust is challenged by the idea of an "affect-based" form of political trust (e.g., Theiss-Morse and Barton 2017)
 
 -   **Research Question**: Are individual trust judgments in surveys
-    driven by affective rationales?
+    driven by affective states?
 
--   **Questionnaire Design**: voice condition only
+-   **Questionnaire Design**: audio condition only
 
 -   **Data**: U.S. non-probability sample; $n$=1,474 with 491 audio open
     answers
@@ -398,7 +368,7 @@ n_happiness=21. Reference category (right): neutral.</figcaption>
 -   Analyzing natural language can inform various debates, e.g.:
     -   [Study 1]{style="color:blue"}: equivalence debate in trust
         research (cf. Bauer & Freitag 2018)
-    -   [Study 2]{style="color:blue"}: oral response formats in web surveys (cf. Gavras et al. 2022)
+    -   [Study 2]{style="color:blue"}: audio response formats in web surveys (cf. Gavras et al. 2022)
     -   [Study 3]{style="color:blue"}: cognitive-versus-affective debate
         in political trust research (cf. Theiss-Morse and Barton 2017)
     -   [Study 1-3]{style="color:blue"}: item and data quality
@@ -416,17 +386,16 @@ n_happiness=21. Reference category (right): neutral.</figcaption>
 <font size = "6">
 
 ::: fragment
-- supervised ML requires sufficient and high-quality labeled data
+- traditional supervised methods need extensive labeled datasets
 :::
 
 ::: fragment
-- LLMs allow modeling with fewer training data and domain-specific knowledge (fine-tuning and prompting techniques)
-
-	-   E.g., [Study 1]{style="color:orange"}: Random Forest vs. BERT n=1,500
+- Language Models (LMs) allow modeling with less labeled data and domain-specific knowledge (fine-tuning and prompting techniques)
+	-   E.g., [Study 1]{style="color:orange"}: Random Forest vs. BERT with n=1,500
 :::
 
 ::: fragment
-- But LLMs suffer from high complexity and limited transparency 
+- But: LMs suffer from high complexity and limited transparency 
     -   start with simple methods and evaluate (e.g., dictionary approach → deep
             learning in [Study 3]{style="color:orange"})
     -   trade off between accuracy and explainability
@@ -461,7 +430,7 @@ n_happiness=21. Reference category (right): neutral.</figcaption>
 
 ------------------------------------------------------------------------
 
-## <font size = "14"> Thank you for your Attention! </font size> {.center background-image="overview-3-studies.png" background-size="150%" background-opacity="0.4"}
+## <font size = "14"> Thank you for your Attention! </font size> {.center}
 
 ------------------------------------------------------------------------
 

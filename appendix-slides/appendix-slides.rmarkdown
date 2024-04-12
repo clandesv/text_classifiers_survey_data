@@ -1,0 +1,291 @@
+---
+title: "Appendix: Methods for the Classification of Data from Open-Ended Questions in Surveys"
+subtitle: "Disputation<br>16 April 2024"
+author:
+  - name: Camille Landesvatter
+    #email: camille.landesvatter@uni-mannheim.de
+    affiliations:
+      - name: University of Mannheim
+format:
+  revealjs: 
+    theme: [white, custom.css]
+    #theme: default 
+    #theme: simple
+    footer: "Appendix: Methods for the Classification of Data from Open-Ended Questions in Surveys"
+    embed-resources: true
+    slide-number: true
+    preview-links: auto
+    #logo: images/quarto.png
+    #show-slide-number: print
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+
+## <font size = "14"> Appendix Intro </font size> {.center}
+
+------------------------------------------------------------------------
+
+## Overview of Methods for Studies 1-3
+
+::: {style="text-align: center;"}
+<figure>
+
+<img src="../table-methods-colored.png"/>
+
+<figcaption>Table 1: Overview Classification Methods and Examples. <em>Source:</em> Own depiction.</figcaption>
+
+</figure>
+:::
+
+------------------------------------------------------------------------
+
+## Characteristics of Open-Ended Survey Answers
+
+
+```{r wordcloud-survey-answers, out.width='100%', fig.align = "center", fig.show='hold'}
+#| label: fig-1
+#| fig-show: "asis"
+#| fig-cap: "The previous question was: 'How often can you trust the federal government in Washington to do what is right?'. Your answer was: '[Always; Most of the time; About half of the time; Some of the time; Never; Don’t Know]'. In your own words, please explain why you selected this answer."
+
+library(tidyverse)
+
+setwd("/Users/camillelandesvatter/Library/CloudStorage/GoogleDrive-landesvatterc@gmail.com/Meine Ablage/2022_work-life-politics/main study/Paper Text-Audio/Submission 1 (POQ)")
+
+data <- read.csv("./data/data_long.csv") %>% 
+  filter(variable_probing=="political_trust_washington") %>% 
+	select("ID_participant", "text_answer") %>% 
+	filter(!is.na(text_answer)) %>% 
+	mutate(doc_length=ifelse(!is.na(text_answer),sapply(strsplit(as.character(text_answer), "[[:space:]]+"), length),NA)) %>% 
+	arrange(doc_length) %>% 
+	filter(ID_participant == "5d91daf3704e790018f47229" | # no context
+				 	ID_participant == "61119010fe205e4436dce3d6" | # no context
+				 	ID_participant == "5d62b2186f363200168bbb85" | # issues of self-administered questionnaires
+				 	ID_participant == "5ea83c900b2b5d24b9942af2" | # issues of self-administered questionnaires
+				 	ID_participant == "601cbb3526aa517be4a924ce" | # context is provided but no details
+				 	ID_participant == "63647038cdac73d9a21f4a3c" |
+				 	ID_participant == "5f5a0f0a612008057e58d281" | #useful
+				 	ID_participant == "5d42ec552de85600153b604a" | #useful
+				 	ID_participant == "5ebf2b97ce2e0f1c05e9b00a" #useful, but other issues (too lengthy)
+				 ) %>% 
+	mutate(code=as.character(c(1,1,2,3,1,2,4,4,5)))
+
+
+# Create a plot
+library(ggplot2)
+library(ggwordcloud)
+
+set.seed(42)
+ggplot(data, aes(label = text_answer)) +
+  geom_text_wordcloud(aes(color = code, size=7)) +
+	scale_size_area(max_size = 6) +
+  theme_minimal() +
+  #labs(title = "") +
+  theme(legend.position = "none") +
+	coord_equal(ratio = 0.5) +
+	theme_linedraw()
+
+```
+
+
+
+
+------------------------------------------------------------------------
+
+## <font size = "14"> Appendix Study 1 </font size> {.center}
+
+------------------------------------------------------------------------
+
+## Study 1: Results
+
+::: {style="text-align: center;"}
+<figure>
+
+<img src="../paper1/appendix/study1-result1.png"/>
+
+<figcaption>Figure 1: Distribution of associations with known people across trust measures. <em>Note:</em> CIs are 95%, n=7,497.</figcaption>
+
+</figure>
+:::
+
+------------------------------------------------------------------------
+
+## Study 1: Results
+
+::: {style="text-align: center;"}
+<figure>
+
+<img src="../paper1/appendix/study1-result2.png"/>
+
+<figcaption>Figure 2: Distribution of associations and their sentiment across trust measures. <em>Note:</em> CIs are 95%.</figcaption>
+
+</figure>
+:::
+
+------------------------------------------------------------------------
+
+## Study 1: Results
+
+::: {style="text-align: center;"}
+<figure>
+
+<img src="../paper1/appendix/regression-plot-disputation-middle.png"/>
+
+<figcaption>Figure 3: Associations and trust scores across different measures. <em>Note:</em> CIs are 95% and 90%.</figcaption>
+
+</figure>
+:::
+
+------------------------------------------------------------------------
+
+## <font size = "14"> Appendix Study 2 </font size> {.center}
+
+------------------------------------------------------------------------
+
+## Study 2: Item Nonresponse by Condition
+
+::: {style="text-align: center;"}
+<figure>
+
+<img src="../paper2/appendix/study2-response-rates.png"/>
+
+<figcaption>Figure 5: Item response rates by experimental condition and item.</figcaption>
+
+</figure>
+:::
+
+------------------------------------------------------------------------
+
+## Study 2: Sample Composition (Sample ↔ Population)
+
+::: {style="text-align: center;"}
+<figure>
+
+<img src="../paper2/appendix/study2-sample-composition-census.png"/>
+
+<figcaption>Table 1: Sample Characteristics in Comparison to US Census Data (2015).</figcaption>
+
+</figure>
+:::
+
+------------------------------------------------------------------------
+
+## Study 2: Covariate Balance (Text and voice)
+
+
+
+::: {style="text-align: center;"}
+<figure>
+
+<img src="../paper2/appendix/study2-cov-balance.png" width="720" height="570" />
+
+<figcaption>Table 2: Covariate Balance between Text and Voice Condition.</figcaption>
+
+</figure>
+:::
+
+
+
+
+
+------------------------------------------------------------------------
+
+## Study 2: Results
+
+::: {style="text-align: center;"}
+<figure>
+
+<img src="../paper2/appendix/information-content-summary.png"/>
+
+<figcaption>Figure 6: Information Content Measures across Questions.<br>
+<em>Note.</em> CIs are 95%, n_vote-choice: 830 (audio: 225, text: 605),
+n_future-children: 1,337 (audio: 389, text: 748)</figcaption>
+
+</figure>
+:::
+
+------------------------------------------------------------------------
+
+## Study 2: Results
+
+::: {style="text-align: center;"}
+<figure>
+
+<img src="../paper2/appendix/study2-entropy.png"/>
+
+<figcaption>Figure 6: Exemplary Survey Answers by Entropy.</figcaption>
+
+</figure>
+:::
+
+------------------------------------------------------------------------
+
+## <font size = "14"> Appendix Study 3 </font size> {.center}
+
+------------------------------------------------------------------------
+
+## Study 3: Results
+
+::: {style="text-align: center;"}
+<figure>
+
+<img src="../paper3/appendix/study3-results1.png"/>
+
+<figcaption>Figure 7: Sentiment Classification with three categories by classifier (BERT vs. GPT).<br>
+<em>Note.</em> n=491 open-ended answers.</figcaption>
+
+</figure>
+:::
+
+<!-- wie schneidet die speech emotion recognition im Vergleich zu den text based classifications ab? -->
+<!-- Text recognizes words and their meanings, here we find sentiment, but audio only includes tonal cues, here we find no such variation, but again if we check emolex (text-based emotion recognition) we find something -->
+
+------------------------------------------------------------------------
+
+## Study 3: Results
+
+::: {style="text-align: center;"}
+<figure>
+
+<img src="../paper3/appendix/study3-results-2.png"/>
+
+<figcaption>Figure 8: Linear model of sentiment and a five-category trust score (bi- and multivariate).<br>
+<em>Note.</em> n=491 open-ended answers, GPT classification.</figcaption>
+
+</figure>
+:::
+
+------------------------------------------------------------------------
+
+## Study 3: Results
+
+::: {style="text-align: center;"}
+<figure>
+
+<img src="../paper3/appendix/study3-results-dict.png"/>
+
+<figcaption>Figure 9: Sentiment Classification with five categories by classifier (AFINN vs. VADER).<br>
+<em>Note.</em> n=496 open-ended answers.</figcaption>
+
+</figure>
+:::
+
+------------------------------------------------------------------------
+
+## Study 3: Results
+
+::: {style="text-align: center;"}
+<figure>
+
+<img src="../paper3/appendix/study3-results-emolex.png"/>
+
+<figcaption>Figure 9: Emotion Classification obtained from EmoLex.<br>
+<em>Note.</em> n=404 open-ended answers, multi-class assignment.</figcaption>
+
+</figure>
+:::
+
+
+
+
