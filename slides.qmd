@@ -145,7 +145,7 @@ Supervised classification approach:
         n=\[[6,500]{style="color:orange"}/[6,000]{style="color:blue"}\]
 :::
 
-[^2]: bidirectional encoder representations from transformers
+[^2]: Bidirectional encoder representations from transformers
 
 <!-- - accuracy^[accuracy = correct predictions / all predictions]: 87% (I) and 95% (II) -->
 
@@ -252,7 +252,7 @@ Supervised classification approach:
     - response entropy
 
 -   **Questionnaire Design**: 9 open-ended questions per respondent,
-    block-randomized order
+    block-randomized order, SVoice tool (Höhne, Gavras and Qureshi 2021)
 
 -   **Data**: U.S. non-probability sample; $n$=1,461 with $n_{text}$=800
     and $n_{audio}$=661
@@ -303,7 +303,7 @@ n_future-children: 1,337 (audio: 389, text: 748)</figcaption>
 -   **Research Question**: Are individual trust judgments in surveys
     driven by affective components?
 
--   **Questionnaire Design**: audio condition only
+-   **Questionnaire Design**: audio condition only, SVoice tool (Höhne, Gavras and Qureshi 2021)
 
 -   **Data**: U.S. non-probability sample; $n$=1,474 with 491 audio open
     answers
@@ -386,7 +386,7 @@ n_happiness=21. Reference category (right): neutral.</figcaption>
 <font size = "6">
 
 ::: fragment
-- traditional supervised methods need extensive labeled datasets
+- Traditional supervised methods need extensive labeled datasets
 :::
 
 ::: fragment
@@ -402,7 +402,7 @@ n_happiness=21. Reference category (right): neutral.</figcaption>
 :::
 
 ::: fragment
-- additionally consider: task difficulty, sample size, structure of the answers, state of previous research, available resources, etc.
+- Additionally consider: task difficulty, sample size, structure of the answers, state of previous research, available resources, etc.
 :::
 
 
@@ -447,9 +447,13 @@ Gavras, K. et al. 2022. “Innovating the collection of open-ended
     oral answers to political attitude questions.” Journal of the Royal
     Statistical Society. Series A, 185(3):872-890.
     
+Höhne, J. K., K. Gavras, and D. Qureshi. 2021. SurveyVoice (SVoice): A
+	Comprehensive Guide for Collecting Voice Answers in Surveys. Zenodo. Available
+	from: https://doi.org/10.5281/zenodo.4644590.
+    
 Pérez, J. et al. 2023. “Pysentimiento: A Python Toolkit for
     Opinion Mining and Social NLP Tasks.” arXiv.<br>Ravanelli, M. et al.
-    2021. “SpeechBrain: A General-Purpose Speech Toolkit.” arXiv
+    2021. “SpeechBrain: A General-Purpose Speech Toolkit.” arXiv.
     
 Theiss-Morse, E., and D. Barton. 2017. “Emotion, Cognition, and
     Political Trust.” Pp. 160–75 in Handbook on Political Trust. Edward
